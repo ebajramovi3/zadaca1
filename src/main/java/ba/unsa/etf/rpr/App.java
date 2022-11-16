@@ -16,17 +16,19 @@ public class App
         }else{
         String input = new String();
         for(int i = 0; i < args.length; i++){
-            if(i > 2)
+            if(i >= 2)
             input = input + " " + args[i];
             else if(i == 1)
                 input = args[i];
         }
+
         ExpressionEvaluator result = new ExpressionEvaluator();
         try{
             System.out.println(result.evaluate(input));
         }catch(Exception exception){
-            exception.getMessage();
+            System.out.println(exception.getMessage());
         }
         }
-    }
+
+}
 }

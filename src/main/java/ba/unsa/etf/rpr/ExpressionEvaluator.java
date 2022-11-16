@@ -4,15 +4,15 @@ import java.util.Stack;
 import static java.lang.Double.parseDouble;
 
 public class ExpressionEvaluator {
-    private java.util.Stack<String> operators;
-    private java.util.Stack<Double> values;
+    private static java.util.Stack<String> operators;
+    private static java.util.Stack<Double> values;
 
     ExpressionEvaluator() {
         operators = new Stack<String>();
         values = new Stack<Double>();
     }
 
-    public Double evaluate(String str) throws Exception {
+    public static Double evaluate(String str) throws RuntimeException {
         String[] izraz = str.split(" ");
         Double result = (double) 0;
         for(int i = 0; i < izraz.length; i++){
@@ -24,7 +24,7 @@ public class ExpressionEvaluator {
                     if(operator.equals("*"))
                         result = result * values.pop();
                     else if(operator.equals("/"))
-                        result = result / values.pop();
+                        result = values.pop() / result;
                     else if(operator.equals("+"))
                         result = result + values.pop();
                     else if(operator.equals("-"))
@@ -37,10 +37,11 @@ public class ExpressionEvaluator {
                 try {
                     values.push(parseDouble(izraz[i]));
                 }catch(NumberFormatException exception){
-                    Exception RuntimeException = new Exception("Izraz nije validan");
-                    throw RuntimeException;
+                    throw new RuntimeException("Izraz nije validan");
                 }
+
             }
+        if(operators.size() != 0) throw new RuntimeException("Izraz nije validan");
         return values.pop();
     }
 }
