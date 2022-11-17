@@ -4,13 +4,8 @@ import java.util.Stack;
 import static java.lang.Double.parseDouble;
 
 public class ExpressionEvaluator {
-    private static java.util.Stack<String> operators;
-    private static java.util.Stack<Double> values;
-
-    ExpressionEvaluator() {
-        operators = new Stack<String>();
-        values = new Stack<Double>();
-    }
+    private static java.util.Stack<String> operators = new Stack<String>();
+    private static java.util.Stack<Double> values = new Stack<Double>();
 
     public static Double evaluate(String str) throws RuntimeException {
         String[] izraz = str.split(" ");
