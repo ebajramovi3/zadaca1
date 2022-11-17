@@ -21,7 +21,7 @@ public class App
             else if(i == 1)
                 input = args[i];
         }
-
+            System.out.println(input);
         ExpressionEvaluator result = new ExpressionEvaluator();
         try{
             System.out.println(result.evaluate(input));

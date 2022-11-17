@@ -28,7 +28,7 @@ public class ExpressionEvaluator {
                     else if(operator.equals("+"))
                         result = result + values.pop();
                     else if(operator.equals("-"))
-                        result = result - values.pop();
+                        result = values.pop() - result;
                     else if(operator.equals("sqrt"))
                         result = Math.sqrt(result);
                     values.push(result);
